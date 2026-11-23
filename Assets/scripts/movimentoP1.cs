@@ -5,6 +5,7 @@ using UnityEngine;
 public class movimentoP1 : MonoBehaviour
 {
     public float speed = 5;
+    public float limiteY = 3.5f;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,5 +25,9 @@ public class movimentoP1 : MonoBehaviour
         {
             transform.Translate(Vector2.down * speed * Time.deltaTime );
         }
+
+        Vector3 pos = transform.position;
+        pos.y = Mathf.Clamp(pos.y, -limiteY, limiteY);
+        transform.position = pos;
     }
 }
